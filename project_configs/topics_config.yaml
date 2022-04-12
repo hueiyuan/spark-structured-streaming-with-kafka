@@ -1,0 +1,9 @@
+data_tags:
+  staging:
+    topic-staging-1: [0,1]
+    topic-staging-2: [0,1]
+
+  production:
+    topic-production-1: [0,1]
+    topic-production-2: [0,1]
+    
