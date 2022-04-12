@@ -1,0 +1,19 @@
+project_name: spark-structured-streaming-kafka-consumer
+project_folder: spark-structured-streaming-kafka-consumer
+
+streaming_consumer:
+  delta_path: "s3://{bucket}/{env}/data/{topic}"
+  data_monitorin_path: "s3://{bucket}/{env}/monitoring/spark/{dt}/{topic}"
+  spark_checkpoint_path: "s3://{bucket}/{env}/checkpoint/{project_name}"
+  exception_case_schema_path: "s3://{bucket}/{env}/exception_case/{project_name}/schema_error"
+
+streaming_setting:
+  group_id_prefix: kafka-to-spark-streaming-template
+  min_partitions: 200
+  processing_time: "30 minute"
+  num_files: 5
+  qps_upperbound: 30000
+
+update_parameters_setting:
+  fetch_min_bytes: 1048576
+  fetch_max_wait_ms: 10000

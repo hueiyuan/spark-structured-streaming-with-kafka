@@ -1,0 +1,20 @@
+aws:
+  region_name: {aws_region}
+  bucket_name: {bucket_name}
+  instance_data_info: /mnt/var/lib/info/extraInstanceData.json
+
+kafka:
+  truststore_path: /usr/lib/jvm/jre/lib/security/cacerts
+  offset_strategy: latest
+
+staging:
+  schmea_registry_ssm_usr: {ssm/schema-registry/usr}
+  schmea_registry_ssm_pwd: {ssm/schema-registry/pwd}
+  schema_registry_url: http://{schema-registry-staging-endpoint}
+  kafka_brokers: {kafka-endpoint-staging}
+
+production: 
+  schmea_registry_ssm_usr: {ssm/schema-registry/usr}
+  schmea_registry_ssm_pwd: {ssm/schema-registry/pwd}
+  schema_registry_url: http://{schema-registry-production-endpoint}
+  kafka_brokers: {kafka-endpoint-production}
