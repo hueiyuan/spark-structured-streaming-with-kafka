@@ -37,7 +37,9 @@ def get_minute_parition(_processing_time, _minutes):
 udf_get_minute_parition = F.udf(get_minute_parition, StringType())
 
 class IngestDataFromKafka:
-    def __init__(self, environment_mode, config):
+    def __init__(self, 
+                 environment_mode: str, 
+                 config: dict):
         logger.info(f'===[INFO]==== env:{environment_mode}')
         self.config = config
         self.env = environment_mode
@@ -147,7 +149,11 @@ class IngestDataFromKafka:
             
         return data_df 
     
-    def __monitoring(self, _data_tag, _start_time, _delta_path, _monitor_path):
+    def __monitoring(self, 
+                     _data_tag: str, 
+                     _start_time: str,
+                     _delta_path: str, 
+                     _monitor_path: str):
         delta_table = DeltaTable.forPath(spark, _delta_path)
         last_operation_df = delta_table.history(1)  # get latest transaction log
         last_operation_df \
@@ -190,7 +196,7 @@ class IngestDataFromKafka:
             raise Exception(e)
 
 
-def main_consumer(environment_mode):
+def main_consumer(environment_mode: str):
     general_config = loadconfig.config(
         service_name='etl',
         config_folder_prefix='project_configs',
