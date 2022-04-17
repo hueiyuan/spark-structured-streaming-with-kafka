@@ -8,7 +8,11 @@ from yaml import Loader, load
 CONF_SUFFIX = 'config.yaml'
 
 class config():
-    def __init__(self, service_name, config_folder_prefix, config_prefix_name, platform=None):
+    def __init__(self, 
+                 service_name: str, 
+                 config_folder_prefix: str, 
+                 config_prefix_name: str, 
+                 platform: str = None):
         self.CONF_NAME = config_prefix_name + '_' + CONF_SUFFIX
         pattern = re.compile('.+({})\/\w+'.format(service_name), flags=re.I)
         file_path = os.path.abspath(__file__)
@@ -38,7 +42,7 @@ class config():
             traceback.print_exc(file=sys.stderr)
             exit(1)
 
-    def _load(self):
+    def _load(self) -> dict:
         stream = open(self.CONF_PATH, 'r')
         config = load(stream, Loader=Loader)
         return config
