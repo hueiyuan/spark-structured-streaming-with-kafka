@@ -11,7 +11,9 @@ def str2bool(v):
     else:
         raise argparse.ArgumentTypeError('Boolean value expected.')
 
-def get_ssm_value(region, ssm_name, is_decryption=True):
+def get_ssm_value(region: str, 
+                  ssm_name: str, 
+                  is_decryption=True) -> str:
     client = boto3.client(service_name='ssm', region_name=region)
     response = client.get_parameter(
         Name=ssm_name,
