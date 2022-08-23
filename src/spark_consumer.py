@@ -14,7 +14,7 @@ from project_libs.common import utils
 from helpers.schema_registry_helper import SRClient
 
 spark = SparkSession.builder \
-    .appName(config["project_name"])\
+    .appName('kafka-spark-consumer')\
     .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
     .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
     .config("spark.streaming.stopGracefullyOnShutdown", True) \
